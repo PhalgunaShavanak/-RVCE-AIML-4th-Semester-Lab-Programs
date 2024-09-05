@@ -1,0 +1,91 @@
+package Lab6;
+import java.util.*;
+public class Main
+{
+public ArrayList<String> list=new ArrayList<String>();
+public static void main(String[] args)
+{
+Main op=new Main();
+Scanner sc=new Scanner(System.in);
+for(;;)
+{
+System.out.println("------ Choice List ------");
+System.out.println("1.Insert");
+System.out.println("2.Copy ArrayList to Array");
+System.out.println("3.Reverse ArrayList contents");
+System.out.println("4.Get sub list from ArrayList");
+System.out.println("5.Sort the ArrayList");
+System.out.println("6.Clone the ArrayList to another 
+ArrayList");
+System.out.println("Enter your choice");
+int ch=sc.nextInt();
+String co=sc.nextLine();
+switch(ch)
+{
+case 1:
+op.list.add("BLACK");
+op.list.add("WHITE");
+op.list.add("BLUE");
+op.list.add("GREEN");
+op.list.add("RED");
+op.list.add("ORANGE");
+op.list.add("YELLOW");
+op.list.add("PURPLE");
+op.list.add("GREY");
+for(String color : op.list)
+{
+System.out.println(color);
+}
+break;
+case 2:
+String [] st=new String[op.list.size()];
+op.list.toArray(st);
+System.out.println("Copied Array");
+for(String color : op.list)
+{
+System.out.println(color);
+}
+break;
+case 3:
+Collections.reverse(op.list);
+System.out.println("Reversed 
+ArrayList:");
+for(String color : op.list)
+{
+System.out.println(color);
+}
+break;
+case 4:
+ArrayList<String> list1=new
+ArrayList<>(op.list.subList(2,4));
+System.out.println("Sublist:");
+for(String color : list1)
+{
+System.out.println(color);
+}
+break;
+case 5:
+Collections.sort(op.list);
+System.out.println("Sorted ArrayList:");
+for(String color : op.list)
+{
+System.out.println(color);
+}
+break;
+case 6:
+ArrayList<String> 
+list2=(ArrayList<String>)op.list.clone();
+System.out.println("Cloned ArrayList:");
+for(String color : list2)
+{
+System.out.println(color);
+}
+break;
+default:
+sc.close();
+return
+;
+}
+}
+}
+}

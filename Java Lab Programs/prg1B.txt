@@ -1,0 +1,201 @@
+package Lab1b;
+import java.util.*;
+class Address
+{
+int streetnum;
+String city;
+String state;
+String country;
+Address(int sn,String c,String s,String co)
+{
+streetnum=sn;
+city=c;
+state=s;
+country=co;
+}
+int getStreetnum()
+{
+return streetnum;
+}
+String getCity()
+{
+return city;
+}
+String getState()
+{
+return state;
+}
+String getCountry()
+{
+return country;
+}
+void printAddress()
+{
+System.out.println("Street number: 
+"+this.getStreetnum());
+System.out.println("City: "+this.getCity());
+System.out.println("State: "+this.getState());
+System.out.println("Country: "+this.getCountry());
+}
+}
+class Student
+{
+String USN;
+String name;
+Address addr;
+Student(String u,String n,Address a)
+{
+USN=u;
+name=n;
+addr=a;
+}
+}
+class College
+{
+String name;
+Address addr;
+College(String n,Address a)
+{
+name=n;
+addr=a;
+}
+}
+class Employee
+{
+String EmpID;
+String name;
+Address addr;
+Employee(String e,String n,Address a)
+{
+EmpID=e;
+name=n;
+addr=a;
+}
+}
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("1.Student");
+System.out.println("2.College");
+System.out.println("3.Employee");
+System.out.println("Enter your choice");
+int ch=sc.nextInt();
+int n=0;
+if(ch==1)
+{
+System.out.println("Enter the number of students");
+n=sc.nextInt();
+String n1=sc.nextLine();
+Student st[]=new Student[n];
+for(int i=1;i<=n;i++)
+{
+System.out.println("Enter the name of the 
+student");
+String na=sc.nextLine();
+System.out.println("Enter the USN of the 
+student");
+String u=sc.nextLine();
+System.out.println("Address");
+System.out.println("Enter street number");
+int sn=sc.nextInt();
+System.out.println("Enter city");
+String c1=sc.nextLine();
+String c=sc.nextLine();
+System.out.println("Enter state");
+String s=sc.nextLine();
+System.out.println("Enter country");
+String co=sc.nextLine();
+Address a=new Address(sn,c,s,co);
+st[i]=new Student(u,na,a);
+}
+System.out.println();
+for(int i=1;i<=n;i++)
+{
+System.out.println("Student "+i+" details");
+System.out.println("Name: "+st[i].name);
+System.out.println("USN: "+st[i].USN);
+st[i].addr.printAddress();
+System.out.println();
+}
+}
+else if(ch==2)
+{
+System.out.println("Enter the number of colleges");
+n=sc.nextInt();
+String n1=sc.nextLine();
+College st[]= new College[n];
+for(int i=0;i<n;i++)
+{
+System.out.println("Enter the name of the 
+college");
+String na=sc.nextLine();
+System.out.println("Address");
+System.out.println("Enter street number");
+int sn=sc.nextInt();
+System.out.println("Enter city");
+String c1=sc.nextLine();
+String c=sc.nextLine();
+System.out.println("Enter state");
+String s=sc.nextLine();
+System.out.println("Enter country");
+String co=sc.nextLine();
+Address a=new Address(sn,c,s,co);
+st[i]=new College(na,a);
+}
+System.out.println();
+for(int i=0;i<n;i++)
+{
+System.out.println("College "+(i+1)+" 
+details");
+System.out.println("Name: "+st[i].name);
+st[i].addr.printAddress();
+System.out.println();
+}
+}
+else if(ch==3)
+{
+System.out.println("Enter the number of employees");
+n=sc.nextInt();
+String n1=sc.nextLine();
+Employee st[]=new Employee[n];
+for(int i=1;i<=n;i++)
+{
+System.out.println("Enter the name of the 
+Employee");
+String na=sc.nextLine();
+System.out.println("Enter the employee ID of 
+the Employee");
+String u=sc.nextLine();
+System.out.println("Address");
+System.out.println("Enter street number");
+int sn=sc.nextInt();
+System.out.println("Enter city");
+String c1=sc.nextLine();
+String c=sc.nextLine();
+System.out.println("Enter state");
+String s=sc.nextLine();
+System.out.println("Enter country");
+String co=sc.nextLine();
+Address a=new Address(sn,c,s,co);
+st[i]=new Employee(u,na,a);
+}
+System.out.println();
+for(int i=1;i<=n;i++)
+{
+System.out.println("Employee "+i+" details");
+System.out.println("Name: "+st[i].name);
+System.out.println("Employee ID: 
+"+st[i].EmpID);
+st[i].addr.printAddress();
+System.out.println();
+}
+}
+else
+{
+System.out.println("Invalid Input");
+}
+sc.close();
+}
+}

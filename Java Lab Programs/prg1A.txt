@@ -1,0 +1,48 @@
+package Lab1;
+class Complex
+{
+int real,imag;
+Complex()
+{
+real=0;
+imag=0;
+}
+Complex(int r,int i)
+{
+this.real=r;
+this.imag=i;
+}
+public Complex add(Complex n1,Complex n2)
+{
+Complex temp=new Complex(0,0);
+temp.real=n1.real+n2.real;
+temp.imag=n1.imag+n2.imag;
+return temp;
+}
+public Complex sub(Complex n1,Complex n2)
+{
+Complex temp=new Complex(0,0);
+temp.real=n1.real-n2.real;
+temp.imag=n1.imag-n2.imag;
+return temp;
+}
+public void display(Complex n)
+{
+System.out.println(n.real+"+i"+n.imag);
+}
+}
+public class Main
+{
+public static void main(String[] args)
+{
+Complex ob=new Complex();
+Complex ob1=new Complex(10,20);
+Complex ob2=new Complex(30,40);
+Complex a=ob.add(ob1,ob2);
+Complex s=ob.sub(ob2,ob1);
+System.out.print("After addition: ");
+ob.display(a);
+System.out.print("After subtraction: ");
+ob.display(s);
+}
+}

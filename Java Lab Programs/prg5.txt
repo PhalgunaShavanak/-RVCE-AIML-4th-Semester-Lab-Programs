@@ -1,0 +1,89 @@
+package Lab5;
+import java.util.*;
+class Market
+{
+private int fruitsNumber;
+private ArrayList<String> fruits;
+public Market(int fruitsNumber)
+{
+this.fruitsNumber=fruitsNumber;
+this.fruits=new ArrayList<>(fruitsNumber);
+}
+public synchronized boolean isFull()
+{
+return fruits.size()==fruitsNumber;
+}
+public synchronized boolean isEmpty()
+{
+return fruits.isEmpty();
+}
+public synchronized void farmer(String fruit)
+{
+if(isFull())
+{
+try
+{
+wait();
+}
+catch(InterruptedException e)
+{
+e.printStackTrace();
+}
+}
+fruits.add(fruit);
+notify();
+}
+public synchronized String consumer()
+{
+if(isEmpty())
+{
+try
+{
+wait();
+}
+catch(InterruptedException e)
+{
+e.printStackTrace();
+}
+}
+String consumedFruit=fruits.remove(0);
+notify();
+return consumedFruit;
+}
+}
+public class Main
+{
+public static void main(String[] args)
+{
+Market m=new Market(5);
+Thread farmerThread=new Thread(new Runnable()
+{
+@Override
+public void run()
+{
+for(int i=1;i<=10;i++)
+{
+String fruit="Fruit "+i;
+m.farmer(fruit);
+System.out.println("Farmer added: 
+"+fruit);
+}
+}
+});
+Thread consumerThread=new Thread(new Runnable()
+{
+@Override
+public void run()
+{
+for(int i=1;i<=10;i++)
+{
+String consumedFruit=m.consumer();
+System.out.println("Consumer consumed: 
+"+consumedFruit);
+}
+}
+});
+farmerThread.start();
+consumerThread.start();
+}
+}

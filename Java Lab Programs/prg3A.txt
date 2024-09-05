@@ -1,0 +1,18 @@
+package AIML;
+public class FourthSemester
+{
+protected void WelcomeMsg()
+{
+System.out.println("Welcome to AIML Dept-4th Semester 
+Young Budding Engineers");
+}
+}
+package RVCE;
+public class AIMLDept extends AIML.FourthSemester
+{
+public static void main(String[] args)
+{
+AIMLDept ob=new AIMLDept();
+ob.WelcomeMsg();
+}
+}

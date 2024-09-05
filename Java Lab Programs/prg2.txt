@@ -1,0 +1,94 @@
+package Lab2a;
+import java.util.*;
+class Circle
+{
+double radius;
+String color;
+Circle()
+{
+radius=0;
+}
+Circle(double r)
+{
+radius=r;
+}
+Circle(double r,String c)
+{
+radius=r;
+color=c;
+}
+double getRadius()
+{
+return radius;
+}
+double getArea()
+{
+return Math.PI*radius*radius;
+}
+String getColor()
+{
+return color;
+}
+}
+class Cylinder extends Circle
+{
+double height;
+Cylinder(double height,double radius)
+{
+super(radius);
+this.height=height;
+}
+Cylinder(double height,double radius,String color)
+{
+super(radius,color);
+this.height=height;
+}
+double getHeight()
+{
+return height;
+}
+double getArea()
+{
+return 2*Math.PI*super.radius*(super.radius+height);
+}
+double getVolume()
+{
+return super.getArea()*height;
+}
+}
+public class Main
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("Cylinder 1");
+System.out.println("Enter the radius of the cylinder");
+double r=sc.nextDouble();
+System.out.println("Enter the height of the cylinder");
+double h=sc.nextDouble();
+System.out.println("Enter the color of the cylinder");
+String c=sc.nextLine();
+c=sc.nextLine();
+Cylinder c1=new Cylinder(h,r,c);
+System.out.println("Cylinder 2");
+System.out.println("Enter the radius of the cylinder");
+r=sc.nextDouble();
+System.out.println("Enter the height of the cylinder");
+h=sc.nextDouble();
+System.out.println("Enter the color of the cylinder");
+c=sc.nextLine();
+c=sc.nextLine();
+Cylinder c2=new Cylinder(h,r,c);
+if(c1.getArea()==c2.getArea() && 
+c1.getVolume()==c2.getVolume() && 
+c1.getColor().equalsIgnoreCase(c2.getColor()))
+{
+System.out.println("The Cylinders are similar");
+}
+else
+{
+System.out.println("The Cylinders are not similar");
+}
+sc.close();
+}
+}

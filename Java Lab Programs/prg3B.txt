@@ -1,0 +1,71 @@
+package Lab3b;
+interface Animal
+{
+void eat();
+void sound();
+}
+interface TiredAnimal extends Animal
+{
+void sleep();
+}
+class Lion implements Animal
+{
+@Override
+public void eat()
+{
+System.out.println("Lions are carnivores and eat meat");
+}
+@Override
+public void sound()
+{
+System.out.println("Lions roar loudly");
+}
+public void body()
+{
+System.out.println("Lions have 4 legs");
+}
+}
+class Snake implements TiredAnimal
+{
+@Override
+public void eat()
+{
+System.out.println("Snakes swallow their prey whole");
+}
+@Override
+public void sound()
+{
+System.out.println("Snakes hiss to communicate");
+}
+@Override
+public void sleep()
+{
+System.out.println("Snakes sleep after eating their 
+prey");
+}
+public void body()
+{
+System.out.println("Snakes do not have legs");
+}
+}
+public class Main
+{
+public static void main(String[] args)
+{
+System.out.println("-------------------------------------
+--------------------------");
+Lion lion=new Lion();
+lion.eat();
+lion.sound();
+lion.body();
+System.out.println("-------------------------------------
+--------------------------");
+Snake snake=new Snake();
+snake.eat();
+snake.sound();
+snake.sleep();
+snake.body();
+System.out.println("-------------------------------------
+--------------------------");
+}
+}
